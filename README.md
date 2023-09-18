@@ -1,38 +1,46 @@
-# Welcome to Remix!
+# Minimal Reproduction (npm i @clerk/remix fails for Remix V2)
 
-- [Remix Docs](https://remix.run/docs)
+## Context
 
-## Development
-
-From your terminal:
+This repo contains a fresh and untouched (apart from this README.md file) install of Remix V2, installed as follows 
 
 ```sh
-npm run dev
+npx create-remix@latest
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+## Minimal Reproduction steps
 
-## Deployment
-
-First, build your app for production:
+Step 1: attempt to install @clerk/remix
 
 ```sh
-npm run build
+npm i @clerk@remix
 ```
 
-Then run the app in production mode:
+## Expected behavior: 
 
-```sh
-npm start
+@clerk/remix successfully installs
+
+
+## Actual behavior:
+
+@clerk/remix fails to install with the following error:
+
 ```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+npm i @clerk/remix
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR!
+npm ERR! While resolving: clerkremixv2installissue@undefined
+npm ERR! Found: @remix-run/react@2.0.0
+npm ERR! node_modules/@remix-run/react
+npm ERR!   @remix-run/react@"^2.0.0" from the root project
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peer @remix-run/react@"^1.7.6" from @clerk/remix@2.10.2
+npm ERR! node_modules/@clerk/remix
+npm ERR!   @clerk/remix@"*" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+```
